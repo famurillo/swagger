@@ -1,0 +1,472 @@
+{
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "description": "Calidad",
+      "url": "https://colsubsidio-test.apigee.net/api"
+    },
+    {
+      "description": "Producción",
+      "url": "https://colsubsidio-prod.apigee.net/api"
+    }
+  ],
+  "info": {
+    "description": "Información de los servicios de lo tecnologia.",
+    "version": "1.0.0",
+    "title": "Tecnologia usuarios",
+    "termsOfService": "http://172.16.95.36/wiki/index.php/T%C3%A9rminos_de_servicio_Swagger",
+    "contact": {
+      "email": "operacionesti@colsubsidio.com"
+    },
+    "license": {
+      "name": "Colsubsidio",
+      "url": "http://172.16.95.36/wiki/index.php/T%C3%A9rminos_de_servicio_Swagger"
+    }
+  },
+  "tags": [
+    {
+      "name": "cols-tecnologia-usuarios",
+      "description": "Consulta de servicios de usuarios."
+    }
+  ],
+  "paths": {
+    "/v2/autenticacion/usuarios/logout/token": {
+      "delete": {
+        "tags": [
+          "cols-tecnologia-usuarios"
+        ],
+        "summary": "Logout de personas del portal",
+        "description": "Logout de personas del portal",
+        "operationId": "logoutTokenSsoc",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "description": "Token del logout.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/logoutTokenPortalPersonaResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Estado inválido"
+          }
+        },
+        "security": [
+          {
+            "apigee_auth": [
+              "write:apigee",
+              "read:apigee"
+            ]
+          }
+        ]
+      }
+    },
+    "/v2/autenticacion/usuarios/logout/empresa": {
+      "delete": {
+        "tags": [
+          "cols-tecnologia-usuarios"
+        ],
+        "summary": "Logout de empresas del portal",
+        "description": "Logout de empresas del portal",
+        "operationId": "logoutEmpresaToken",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "description": "Token del logout.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/logoutTokenPortalEmpresaResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Estado inválido"
+          }
+        },
+        "security": [
+          {
+            "apigee_auth": [
+              "write:apigee",
+              "read:apigee"
+            ]
+          }
+        ]
+      }
+    },
+    "/v2/autenticacion/usuarios/contrasenha": {
+      "put": {
+        "tags": [
+          "cols-tecnologia-usuarios"
+        ],
+        "summary": "Cambio de contraseña de empresas",
+        "description": "Cambio de contraseña de empresas",
+        "operationId": "actualizarContrasenhaEmpresa.v2",
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/logoutTokenPortalEmpresaResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Estado inválido"
+          }
+        },
+        "security": [
+          {
+            "apigee_auth": [
+              "write:apigee",
+              "read:apigee"
+            ]
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/actualizarContrasenhaEmpresaRequestBody"
+        }
+      }
+    },
+    "/v2/autenticacion/usuarios/contrasenha/clientes": {
+      "put": {
+        "tags": [
+          "cols-tecnologia-usuarios"
+        ],
+        "summary": "Cambio de contraseña de clientes",
+        "description": "Cambio de contraseña de clientes",
+        "operationId": "actualizarContrasenhaCliente.v2",
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/logoutTokenPortalEmpresaResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Estado inválido"
+          }
+        },
+        "security": [
+          {
+            "apigee_auth": [
+              "write:apigee",
+              "read:apigee"
+            ]
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/actualizarContrasenhaClienteRequestBody"
+        }
+      }
+    },
+    "/v2/autenticacion/usuarios": {
+      "put": {
+        "tags": [
+          "cols-tecnologia-usuarios"
+        ],
+        "summary": "Actualizar datos de usuarios.",
+        "description": "Actualizar datos de usuarios.",
+        "operationId": "actualizarDatosUsuario.v2",
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/actualizarDatosUsuarioResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Estado inválido"
+          }
+        },
+        "security": [
+          {
+            "apigee_auth": [
+              "write:apigee",
+              "read:apigee"
+            ]
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/actualizarDatosUsuarioRequestBody"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Encontrar más información en EnterpriseArchitect",
+    "url": "http://172.16.95.36/wiki/index.php/Enterprise_Architect"
+  },
+  "components": {
+    "schemas": {
+      "resultado": {
+        "type": "object",
+        "properties": {
+          "codigo": {
+            "type": "string",
+            "description": "Código del resultado"
+          },
+          "descripcion": {
+            "type": "string",
+            "description": "Descripción del resultado"
+          }
+        },
+        "xml": {
+          "name": "resultado"
+        }
+      },
+      "actualizarDatosUsuarioResponse": {
+        "type": "object",
+        "required": [
+          "resultado"
+        ],
+        "properties": {
+          "resultado": {
+            "type": "array",
+            "xml": {
+              "name": "resultado"
+            },
+            "items": {
+              "$ref": "#/components/schemas/resultado"
+            }
+          }
+        }
+      },
+      "actualizarDatosUsuarioRequest": {
+        "type": "object",
+        "properties": {
+            "usuario": {
+            "$ref": "#/components/schemas/usuarioPutRequest"
+          }
+        }
+      },
+      "usuarioPutRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Nombre del usuario"
+          },
+          "correoElectronico": {
+            "type": "string",
+            "description": "Correo electronico."
+          },
+          "telefono": {
+            "type": "string",
+            "description": "Numero de telefono"
+          },
+          "terminos": {
+            "type": "string",
+            "description": "Términos y condiciones"
+          },
+          "ivr": {
+            "type": "string",
+            "description": "Campo obligatorio que indica el canal de actualización IVR."
+          },
+          "documento": {
+            "$ref": "#/components/schemas/documentoPutRequest"
+          },
+          "nombre": {
+            "$ref": "#/components/schemas/nombrePutRequest"
+          },
+        }
+      },
+      "documentoPutRequest": {
+        "type": "object",
+        "properties": {
+          "tipo": {
+            "type": "string",
+            "description": "Tipo de documento de identificacion."
+          },
+          "numero": {
+            "type": "string",
+            "description": "Numero de documento de identificacion."
+          },
+          "expedicion": {
+            "$ref": "#/components/schemas/expedicion"
+          }
+        }
+      },
+      "expedicion": {
+        "type": "object",
+        "properties": {
+          "fecha": {
+            "type": "string",
+            "description": "Fecha de expedicion del documento."
+          }
+        }
+      },
+      "nombrePutRequest": {
+        "type": "object",
+        "properties": {
+          "primero": {
+            "type": "string",
+            "description": "Nombres del usuario."
+          },
+          "primerApellido": {
+            "type": "string",
+            "description": "Apellidos del usuario."
+          },
+          "completo": {
+            "type": "string",
+            "description": "Nombre completo del ususario."
+          },
+        }
+      },
+      "actualizarContrasenhaEmpresaRequest": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "description": "Token"
+          },
+          "usuario": {
+            "$ref": "#/components/schemas/usuario"
+          },
+          "contrasenha": {
+            "$ref": "#/components/schemas/contrasenha"
+          }
+        }
+      },
+      "usuario": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Nombre del usuario"
+          }
+        }
+      },
+      "contrasenha": {
+        "type": "object",
+        "properties": {
+          "actual": {
+            "type": "string",
+            "description": "Actual contraseña"
+          },
+          "nueva": {
+            "type": "string",
+            "description": "Nueva contraseña"
+          },
+        }
+      },
+      "logoutTokenPortalEmpresaResponse": {
+        "type": "object",
+        "required": [
+          "resultado"
+        ],
+        "properties": {
+          "resultado": {
+            "type": "array",
+            "xml": {
+              "name": "resultado"
+            },
+            "items": {
+              "$ref": "#/components/schemas/resultado"
+            }
+          }
+        }
+      },
+      "logoutTokenPortalPersonaResponse": {
+        "type": "object",
+        "required": [
+          "resultado"
+        ],
+        "properties": {
+          "resultado": {
+            "type": "array",
+            "xml": {
+              "name": "resultado"
+            },
+            "items": {
+              "$ref": "#/components/schemas/resultado"
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "actualizarDatosUsuarioRequestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/actualizarDatosUsuarioRequest"
+            }
+          }
+        },
+        "description": "Informacion de datos del usuario.",
+        "required": true
+      },
+      "actualizarContrasenhaEmpresaRequestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/actualizarContrasenhaEmpresaRequest"
+            }
+          }
+        },
+        "description": "Informacion del cambio de contraseña",
+        "required": true
+      },
+      "actualizarContrasenhaClienteRequestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/actualizarContrasenhaEmpresaRequest"
+            }
+          }
+        },
+        "description": "Informacion del cambio de contraseña",
+        "required": true
+      }
+    },
+    "securitySchemes": {
+      "apigee_auth": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://colsubsidio-test.apigee.net/oauth/client_credential/accesstoken?grant_type=client_credentials",
+            "scopes": {
+              "write:apigee": "Permisos de escritura",
+              "read:apigee": "Permisos de lectura"
+            }
+          }
+        }
+      }
+    }
+  }
+}
